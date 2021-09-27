@@ -3,6 +3,7 @@ import { cartActions } from "store/cart-slice";
 
 const Cart = () => {
     const cartItems = useSelector(state => state.cart.items);
+    const totalAmount = useSelector(state => state.cart.totalAmount);
 
     const dispatch = useDispatch();
 
@@ -26,7 +27,7 @@ const Cart = () => {
                                 <i className="fa fa-shopping-cart cart-icon"></i><span className="badge">3</span>
                                 <div className="shopping-cart-total">
                                     <span className="lighter-text">Total:</span>
-                                    <span className="main-color-text">$2,229.97</span>
+                                    <span className="main-color-text">${totalAmount}</span>
                                 </div>
                             </div> {/*end shopping-cart-header */}
 
