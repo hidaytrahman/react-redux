@@ -31,9 +31,25 @@ const cartSlice = createSlice({
 
                 // or update the existing item quantity and price
                 existingItem.quantity++;
-                existingItem.totalPrice =  existingItem.totalPrice + newItem.price;
+                existingItem.totalPrice = existingItem.totalPrice + newItem.price;
             }
 
+        },
+
+        removeFromCart(state, action) {
+            const id = action.payload;
+
+            const existingItem = state.items.find(item => id === item.id);
+            state.totalQuantity--;
+
+            // check if the current quantity is one and remove item from the cart list
+            if (existingItem.quantity === 1) {
+                state.items = state.items.filter((item) => item.id !== id)
+            } else {
+                // else just decrease the quantity and the price
+                existingItem.quantity--;
+                existingItem.totalPrice = existingItem.totalPrice - existingItem.price;
+            }
         }
     }
 });
