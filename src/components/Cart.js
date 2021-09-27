@@ -10,6 +10,10 @@ const Cart = () => {
         dispatch(cartActions.removeFromCart(id))
     }
 
+    const addToCartHandler = (item) => {
+        dispatch(cartActions.addToCart(item))
+    }
+
     return (
         <div className="container">
 
@@ -36,7 +40,7 @@ const Cart = () => {
 
                                             <button className="btn btn-primary" onClick={() => removeFromCartHandler(item.id)}>-</button>
                                             <span className="item-quantity">{item.quantity}</span>
-                                            <button className="btn btn-primary">+</button>
+                                            <button className="btn btn-primary" onClick={() => addToCartHandler(item)}>+</button>
                                         </li>
                                     ))
                                 }
