@@ -1,10 +1,8 @@
-import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { cartActions } from "store/cart-slice";
 
 const Cart = () => {
-    const cart = useSelector(state => state.cart);
-    const cartItems = cart.items;
+    const cartItems = useSelector(state => state.cart.items);
     const totalAmount = useSelector(state => state.cart.totalAmount);
 
     const dispatch = useDispatch();
@@ -19,33 +17,6 @@ const Cart = () => {
     }
 
     
-
-    useEffect(() => {
-
-        // save item to cart
-        const saveCartItem = async () => {
-            const response = await fetch('https://react-app-61002-default-rtdb.asia-southeast1.firebasedatabase.app/cart.json', {
-                method: 'PUT',
-                body: JSON.stringify(cart)
-            });
-
-            console.log('response ', response)
-
-            return response.json();
-
-        }
-
-        try {
-            const data = saveCartItem();
-            console.log(' data ', data);
-        } catch (err) {
-            throw new Error('Coundnt store the cart data')
-        }
-
-
-    }, [cart]);
-
-
     return (
         <div className="container">
 
