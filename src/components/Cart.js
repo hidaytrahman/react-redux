@@ -16,10 +16,9 @@ const Cart = () => {
 
     const addToCartHandler = (item) => {
         dispatch(cartActions.addToCart(item));
-
-
-
     }
+
+    
 
     useEffect(() => {
 
